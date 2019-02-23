@@ -23,30 +23,14 @@ const accountList: IAccountItemProps[] = [{
     type: IncomeType.outcome,
   }
 },]
-class Home extends React.Component {
-  // private currentTab: ViewTabTypes = ViewTabTypes.LIST
-  state = {
-    currentTab: ViewTabTypes.LIST
-  }
-  constructor(props: any) {
-    super(props);
-    this.state = {
-      currentTab: ViewTabTypes.LIST
-    };
-  }
-  public changeTabName(key: ViewTabTypes) {
-    this.setState({
-      currentTab: key
-    })
-  }
-  public render() {
-    return (
-      <div className="App">
-        <ViewTabs tabName={this.state.currentTab} onChange={this.changeTabName.bind(this)} />
-        <AccountList item={accountList} />
-      </div>
-    );
-  }
+const Home = () => {
+  const [currentTab, setCurrentTab] = React.useState(ViewTabTypes.LIST)
+  return (
+    <div className="App">
+      <ViewTabs tabName={currentTab} onChange={setCurrentTab} />
+      <AccountList item={accountList} />
+    </div>
+  );
 }
 
 export default Home;

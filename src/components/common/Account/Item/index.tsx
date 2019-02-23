@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { Button, Col, Row } from 'antd';
-// import {Item} from './style.js'
+import {Item} from './style'
 export enum IncomeType {
   outcome,
   income
 }
-export interface AccountItemProps {
+export interface IAccountItemProps {
   id: string,
   title: string,
   price: number,
@@ -16,22 +16,22 @@ export interface AccountItemProps {
     name: string,
   }
 }
-export default (props: AccountItemProps) => {
+export default (props: IAccountItemProps) => {
   const { title, price, date } = props
   const { type, name } = props.category
   console.log('z')
   return (
-    <div>
-      <Row>
-        <Col span={2}>{name}</Col>
-        <Col span={8}>{title}</Col>
-        <Col span={4}>{type === IncomeType.income ? price : -price}</Col>
-        <Col span={4}>{date}</Col>
-        <Col span={6}>
+    <Item>
+      <Row type="flex" justify="space-between" className="item-row">
+        <Col span={2} className="item-col">{name}</Col>
+        <Col span={8} className="item-col">{title}</Col>
+        <Col span={4} className="item-col">{type === IncomeType.income ? price : -price}</Col>
+        <Col span={4} className="item-col">{date}</Col>
+        <Col span={6} className="item-col">
           <Button type="primary">增加</Button>
           <Button type="danger">减少</Button>
         </Col>
       </Row>
-    </div>
+    </Item>
   )
 }

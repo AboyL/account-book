@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { AccountItemProps,IncomeType } from '../../components/common/Account/Item'
+import { IAccountItemProps,IncomeType } from '../../components/common/Account/Item'
 import AccountList from '../../components/common/Account/List'
-const accountList: AccountItemProps[] = [{
+const accountList: IAccountItemProps[] = [{
   id: '1',
   title: '去云南旅游',
   price: 200,

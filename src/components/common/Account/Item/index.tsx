@@ -1,6 +1,6 @@
 import * as React from 'react';
-import {  Col, Row,Icon } from 'antd';
-import {Item} from './style'
+import { Col, Row, Icon } from 'antd';
+import { Item } from './style'
 export enum IncomeType {
   outcome,
   income
@@ -16,10 +16,9 @@ export interface IAccountItemProps {
     name: string,
   }
 }
-export default (props: IAccountItemProps) => {
+const AccountItem = (props: IAccountItemProps) => {
   const { title, price, date } = props
   const { type, name } = props.category
-  console.log('z')
   return (
     <Item>
       <Row type="flex" justify="space-between" className="item-row">
@@ -29,9 +28,10 @@ export default (props: IAccountItemProps) => {
         <Col span={4} className="item-col">{date}</Col>
         <Col span={6} className="item-col">
           <Icon type="edit" theme="twoTone" className="opreate-icon" />
-          <Icon type="delete" theme="twoTone" className="opreate-icon"/>
+          <Icon type="delete" theme="twoTone" className="opreate-icon" />
         </Col>
       </Row>
     </Item>
   )
 }
+export default AccountItem

@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Row, Col, Icon } from 'antd';
+import { ThemeColor } from '../../../constants/style'
 export enum IncomeType {
   outcome,
   income
@@ -12,10 +13,9 @@ export enum ViewTabTypes {
   LIST = "LIST",
   CHART = "CHART"
 }
-const ActiveColor = '#4280f4'
 const RowStyle: React.CSSProperties = {
   margin: '10px 0',
-  borderBottom: `1px solid ${ActiveColor}`
+  borderBottom: `1px solid ${ThemeColor}`
 }
 const tabBaseStyle: React.CSSProperties = {
   boxSizing:'border-box',
@@ -24,8 +24,8 @@ const tabBaseStyle: React.CSSProperties = {
   cursor: 'pointer',
 }
 const activeTabStyle: React.CSSProperties = {
-  color: `${ActiveColor}`,
-  outline: `1px solid ${ActiveColor}`,
+  color: `${ThemeColor}`,
+  outline: `1px solid ${ThemeColor}`,
   borderBottomWidth: '0',
   ...tabBaseStyle
 

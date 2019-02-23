@@ -2,6 +2,7 @@ import * as React from 'react';
 import { IAccountItemProps, IncomeType } from '../../components/common/Account/Item'
 import AccountList from '../../components/common/Account/List'
 import ViewTabs, { ViewTabTypes } from '../../components/base/ViewTabs'
+import HomeHeader from './componets/HomeHeader'
 const accountList: IAccountItemProps[] = [{
   id: '1',
   title: '去云南旅游',
@@ -23,10 +24,14 @@ const accountList: IAccountItemProps[] = [{
     type: IncomeType.outcome,
   }
 },]
+const homeStyle:React.CSSProperties={
+  margin:'30px'
+}
 const Home = () => {
   const [currentTab, setCurrentTab] = React.useState(ViewTabTypes.LIST)
   return (
-    <div className="App">
+    <div className="App" style={homeStyle}>
+      <HomeHeader title="L的记账本" income={7000} outcome={5000} />
       <ViewTabs tabName={currentTab} onChange={setCurrentTab} />
       <AccountList item={accountList} />
     </div>

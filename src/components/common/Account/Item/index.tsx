@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Button, Col, Row } from 'antd';
+import {  Col, Row,Icon } from 'antd';
 import {Item} from './style'
 export enum IncomeType {
   outcome,
@@ -28,8 +28,8 @@ export default (props: IAccountItemProps) => {
         <Col span={4} className="item-col">{type === IncomeType.income ? price : -price}</Col>
         <Col span={4} className="item-col">{date}</Col>
         <Col span={6} className="item-col">
-          <Button type="primary">增加</Button>
-          <Button type="danger">减少</Button>
+          <Icon type="edit" theme="twoTone" className="opreate-icon" />
+          <Icon type="delete" theme="twoTone" className="opreate-icon"/>
         </Col>
       </Row>
     </Item>

@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import { ThemeColor, ZIndex1 } from '../../../constants/style';
 
+export const activeClassName='active'
 export const MonthYearPickerWrapper = styled.div`
   position:relative;
   z-index:${ZIndex1};
@@ -21,7 +22,7 @@ export const PickerListItem = styled.div`
   border: 1px solid ${ThemeColor};
   text-align:center;
   cursor:pointer;
-  &.active{
+&.${activeClassName}{
     background-color:${ThemeColor};
     color:white;
   }

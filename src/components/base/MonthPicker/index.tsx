@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Button, Icon, Row, Col } from "antd";
-import { MonthYearPickerWrapper, PickerListWrpper, PickerListItem } from "./style";
+import { MonthYearPickerWrapper, PickerListWrpper, PickerListItem,activeClassName } from "./style";
 import * as _ from "lodash";
 import { padLeftDate } from '../../../utils'
 interface IMonthPickerProps {
@@ -10,7 +10,7 @@ interface IMonthPickerProps {
   onchange: (year: number, month: number) => void
 }
 
-const getActiveClassName = (onw: number, current: number): string => onw === current ? 'active' : ''
+const getActiveClassName = (onw: number, current: number): string => onw === current ? activeClassName : ''
 
 const MonthPicker = ({ 
   year,
@@ -18,7 +18,7 @@ const MonthPicker = ({
   yearGap = 4, 
   onchange 
 }: IMonthPickerProps) => {
-  
+
   const [showPicker, setShowPicker] = React.useState<Boolean>(true)
   const [initYear, setInitYear] = React.useState(0)
 

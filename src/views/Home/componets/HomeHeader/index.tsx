@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Col, Row } from 'antd';
-
+import MonthPicker from '../../../../components/base/MonthPicker'
 import { HeaderWrapper } from './style'
 interface IHomeHeaderProps {
   title: string,
@@ -8,6 +8,12 @@ interface IHomeHeaderProps {
   outcome: number
 }
 const HomeHeader = (props: IHomeHeaderProps) => {
+  const [year, setYear] = React.useState(2019)
+  const [month, setMoth] = React.useState(2)
+  const onDateChange = (changeYear: number, changeMonth: number) => {
+    setYear(changeYear)
+    setMoth(changeMonth)
+  }
   return (
     <HeaderWrapper>
       <header>
@@ -15,7 +21,7 @@ const HomeHeader = (props: IHomeHeaderProps) => {
       </header>
       <Row type='flex'>
         <Col span={12}>
-          时间:222
+          时间:<MonthPicker year={year} month={month} onchange={onDateChange} />
         </Col>
         <Col span={12}>
           <Row>

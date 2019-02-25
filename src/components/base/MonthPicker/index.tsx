@@ -9,17 +9,27 @@ interface IMonthPickerProps {
   yearGap?: number,
   onchange: (year: number, month: number) => void
 }
-// let initYear: number = 0
+
 const getActiveClassName = (onw: number, current: number): string => onw === current ? 'active' : ''
-const MonthPicker = ({ year, month, yearGap = 4, onchange }: IMonthPickerProps) => {
+
+const MonthPicker = ({ 
+  year,
+  month, 
+  yearGap = 4, 
+  onchange 
+}: IMonthPickerProps) => {
+  
   const [showPicker, setShowPicker] = React.useState<Boolean>(true)
   const [initYear, setInitYear] = React.useState(0)
+
   const pickDate = (year: number, month: number) => {
     onchange(year, month)
   }
+
   React.useEffect(() => {
     setInitYear(year)
   }, [true])
+
   return (
     <MonthYearPickerWrapper>
       <Button onClick={() => setShowPicker(!showPicker)}>

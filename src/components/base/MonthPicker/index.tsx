@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Button, Icon, Row, Col } from "antd";
 import { MonthYearPickerWrapper, PickerListWrpper, PickerListItem } from "./style";
 import * as _ from "lodash";
+import { padLeftDate } from '../../../utils'
 interface IMonthPickerProps {
   year: number,
   month: number,
@@ -29,7 +30,7 @@ const MonthPicker = ({ year, month, yearGap = 4, onchange }: IMonthPickerProps) 
           <Row type="flex">
             <Col span={12}>
               {
-                _.range(initYear - yearGap, initYear+1).map(onwYear => (
+                _.range(initYear - yearGap, initYear + 1).map(onwYear => (
                   <PickerListItem key={onwYear} className={getActiveClassName(onwYear, year)} onClick={() => pickDate(onwYear, month)}>{onwYear}年</PickerListItem>
                 ))
               }
@@ -37,11 +38,8 @@ const MonthPicker = ({ year, month, yearGap = 4, onchange }: IMonthPickerProps) 
             <Col span={12}>
               {
                 _.range(1, 12 + 1).map(onwMonth => (
-                  <PickerListItem key={onwMonth} className={getActiveClassName(onwMonth, month)} onClick={() => { pickDate(year, onwMonth) }}>{onwMonth}月</PickerListItem>
+                  <PickerListItem key={onwMonth} className={getActiveClassName(onwMonth, month)} onClick={() => { pickDate(year, onwMonth) }}>{padLeftDate(onwMonth)}月</PickerListItem>
                 ))
-              }
-              {
-                month !== 12 ? <div style={{ textAlign: 'center' }}>...</div> : null
               }
             </Col>
           </Row>

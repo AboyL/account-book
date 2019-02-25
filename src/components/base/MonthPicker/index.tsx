@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Button, Icon, Row, Col } from "antd";
-import { MonthYearPickerWrapper, PickerListWrpper, PickerListItem,activeClassName } from "./style";
+import { MonthYearPickerWrapper, PickerListWrpper, PickerListItem, activeClassName } from "./style";
 import * as _ from "lodash";
 import { padLeftDate } from '../../../utils'
 interface IMonthPickerProps {
@@ -12,31 +12,42 @@ interface IMonthPickerProps {
 
 const getActiveClassName = (onw: number, current: number): string => onw === current ? activeClassName : ''
 
-const MonthPicker = ({ 
+const MonthPicker = ({
   year,
-  month, 
-  yearGap = 4, 
-  onchange 
+  month,
+  yearGap = 4,
+  onchange
 }: IMonthPickerProps) => {
 
-  const [showPicker, setShowPicker] = React.useState<Boolean>(true)
+  const [showPicker, setShowPicker] = React.useState<Boolean>(false)
   const [initYear, setInitYear] = React.useState(0)
 
   const pickDate = (year: number, month: number) => {
     onchange(year, month)
   }
-
+  const closePicker = () => {
+    setShowPicker(false)
+    // 解除绑定
+    document.removeEventListener('click', closePicker)
+  }
+  const changePicker = (pickerState: boolean) => {
+    setShowPicker(pickerState)
+    if (pickerState) {
+      // 给document绑定事件关闭 在点击外部进行关闭
+      document.addEventListener('click', closePicker)
+    }
+  }
   React.useEffect(() => {
     setInitYear(year)
   }, [true])
 
   return (
     <MonthYearPickerWrapper>
-      <Button onClick={() => setShowPicker(!showPicker)}>
+      <Button onClick={() => changePicker(!showPicker)}>
         {`${year}年 / ${month}月`}<Icon type="caret-down" />
       </Button>
       {showPicker ?
-        <PickerListWrpper>
+        <PickerListWrpper onClick={(e) => { e.nativeEvent.stopImmediatePropagation() }}>
           <Row type="flex">
             <Col span={12}>
               {

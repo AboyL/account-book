@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Col, Row } from 'antd';
 import MonthPicker from '../../../../components/base/MonthPicker'
 import { HeaderWrapper } from './style'
-interface IHomeHeaderProps {
+export interface IHomeHeaderProps {
   title: string,
   income: number,
   outcome: number
@@ -16,7 +16,7 @@ const HomeHeader = (props: IHomeHeaderProps) => {
   }
   return (
     <HeaderWrapper>
-      <header>
+      <header className="title">
         {props.title}
       </header>
       <Row type='flex'>
@@ -25,8 +25,8 @@ const HomeHeader = (props: IHomeHeaderProps) => {
         </Col>
         <Col span={12}>
           <Row>
-            <Col span={12}>收入:{props.income}</Col>
-            <Col span={12}>支出:{props.outcome}</Col>
+            <Col span={12} className="income">收入:{props.income}</Col>
+            <Col span={12} className="outcome">支出:{props.outcome}</Col>
           </Row>
         </Col>
       </Row>
